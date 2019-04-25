@@ -128,10 +128,11 @@ export default class Checkbox extends React.Component {
     render() {
         const name = this.props.name || this.props.id;
         let style = this.getStyle();
-        const checkContent = this.isChecked() ? "✓" : null;
+        const checkContent = this.isChecked() ? "X" : null;
+        const hiddenValue = this.isChecked() ? "0" : "1";
         const checkbox = (
             <Fragment>
-                <input name={name} type="hidden" value="1"/>
+                <input name={name} type="hidden" value={hiddenValue}/>
                 <div tabIndex="0"
                      id={this.props.id}
                      className="checkbox"

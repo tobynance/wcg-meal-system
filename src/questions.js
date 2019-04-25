@@ -77,29 +77,29 @@ class QuestionsComponent extends Component {
                         <br/>
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
                             <span style={{paddingRight: "10px", width: "50px"}}>cook:</span>
-                            <Checkbox name="cook1">1</Checkbox>
-                            <Checkbox name="cook2">2</Checkbox>
-                            <Checkbox name="cook3">3</Checkbox>
-                            <Checkbox name="cook4">4</Checkbox>
-                            <Checkbox name="cook5">5</Checkbox>
+                            <Checkbox name="ncook1">1</Checkbox>
+                            <Checkbox name="ncook2">2</Checkbox>
+                            <Checkbox name="ncook3">3</Checkbox>
+                            <Checkbox name="ncook4">4</Checkbox>
+                            <Checkbox name="ncook5">5</Checkbox>
                         </div>
 
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
                             <span style={{paddingRight: "10px", width: "50px"}}>assist:</span>
-                            <Checkbox name="assist1">1</Checkbox>
-                            <Checkbox name="assist2">2</Checkbox>
-                            <Checkbox name="assist3">3</Checkbox>
-                            <Checkbox name="assist4">4</Checkbox>
-                            <Checkbox name="assist5">5</Checkbox>
+                            <Checkbox name="nassist1">1</Checkbox>
+                            <Checkbox name="nassist2">2</Checkbox>
+                            <Checkbox name="nassist3">3</Checkbox>
+                            <Checkbox name="nassist4">4</Checkbox>
+                            <Checkbox name="nassist5">5</Checkbox>
                         </div>
 
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
                             <span style={{paddingRight: "10px", width: "50px"}}>clean:</span>
-                            <Checkbox name="clean1">1</Checkbox>
-                            <Checkbox name="clean2">2</Checkbox>
-                            <Checkbox name="clean3">3</Checkbox>
-                            <Checkbox name="clean4">4</Checkbox>
-                            <Checkbox name="clean5">5</Checkbox>
+                            <Checkbox name="nclean1">1</Checkbox>
+                            <Checkbox name="nclean2">2</Checkbox>
+                            <Checkbox name="nclean3">3</Checkbox>
+                            <Checkbox name="nclean4">4</Checkbox>
+                            <Checkbox name="nclean5">5</Checkbox>
                         </div>
                     </li>
                     <li>
