@@ -1,0 +1,980 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+	<title>Meals Availability</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js" /></script>
+	<link href="meals_style.css" rel="stylesheet" />
+	<style type="text/css">tr:nth-child(even){background-color: #f2f2f2};
+	</style>
+</head>
+<body>
+<script>
+var allDates = new Array();
+// This date is the Sunday preceeding (or at) the beginning of the cycle
+initialDate = new Date("03/03/2019");
+totalDates = 98;
+allDates[0] = initialDate.toDateString().slice(4);
+for (i = 1; i < totalDates; i++)
+{
+   allDates[i] = new Date(initialDate.setDate(initialDate.getDate() + 1)).toDateString().slice(4);
+}
+</script>
+<h1>Welcome to the WCG Meal System entry form.</h1>
+Come and enjoy the beginning of spring (we hope!) with your neighbors in the common house.<br>
+<iframe src="https://giphy.com/embed/l0ExhmPJDK9YwG7uM" width="240" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<br> <br>
+As usual, please submit a form for <strong>every person</strong>, not as a couple. You will have the option of leaving the form filled out after you submit to make that easier.</p>
+
+<div align="left">
+<form action="http://www.winslowcohousing.org/meals/cgi-bin/test_handler.php" method="POST" name="scheduleinfo">
+<ol>
+	<li><strong>Please enter your name:</strong><br>
+	<input name="name" type="text"><br>
+	<br>
+	<!--<LI><strong>Please enter the number of meals you intend to eat this cycle: </strong><br>There are 14 weeks and XX meals this cycle, including <strong>optional</strong> meals on XX/XX/XX. There will be no meals on XX/XX. <i>Remember this is a 3-month cycle with 14 weeks.</i> <br>
+<input type="text" size="2" name="nmeals"><br>
+<br>--></li>
+	<li><strong>Please select the average number of meals per week you want
+	    to eat this cycle (Mar-May, 13 weeks total).</strong> <br>
+	  To help, we've listed the estimated anticipated workload based on the past round.<br />
+	<input name="nmeals1" type="hidden" value="0"> <input name="nmeals1" type="checkbox" /> 1 meal/week (4 assist/cleans or 2 cooks)<br />
+	<input name="nmeals2" type="hidden" value="0"> <input name="nmeals2" type="checkbox" /> 2 meal/week (7 assist/cleans or 3.5 cooks)<br />
+	<input name="nmeals3" type="hidden" value="0"> <input name="nmeals3" type="checkbox" /> 3 meal/week (10 assist/cleans or 5 cooks)<br />
+	<input name="nmeals4" type="hidden" value="0"> <input name="nmeals4" type="checkbox" /> 4 meal/week (13 assist/cleans or 6.5 cooks)<br />
+	<input name="nmeals5" type="hidden" value="0"> <input name="nmeals5" type="checkbox" /> 5 meal/week (13 assist/cleans or 6.5 cooks)<br />
+	<input name='nmeals0-Volunteer' type="hidden" value="0"> <input name='nmeals0-Volunteer' type="checkbox" /> I'm not planning on being in the meal system this round, but I'd like to volunteer to cook 2 meals this cycle. (Thank you!)<br />
+	</li> <br>
+	<li><strong>NEW--ONE CLEAN PER CYCLE (if necessary): </strong><br>
+	  As noted in recent meal system
+	discussions (meal system user meeting, general meeting, and in personal
+	e-mails to those affected), we have experienced a significant lack of
+	cleaners, and may need to ask everyone in the meal system to pick up
+	one clean shift per 3-month cycle. We know this isn't ideal, and
+	appreciate folks being willing to chip in. If you strongly prefer not to clean other than this one shift, please check this box:<br>
+	<input name="noclean" type="hidden" value="0">
+	<input name="noclean" type="checkbox" value="none"> I strongly prefer
+	not to clean more than the 1 time (if required / if necesary).<br><br>
+	<strong> EVERYONE: Please show availability for at least one
+	  cleaning shift. </strong> We'll only use it if we need it!</li>
+	<br>
+	<li><strong>Please schedule my shifts together if possible (cook & clean, or assist & clean).</strong><br>
+	Please note that cleaning done during your normal cook or assist shift does not count towards your cleaning shift. You are still expected to complete a full cleaning shift with your cleaning partner, staying until the kitchen and dining room are clean.<br />
+	<input name="shiftstogether" type="hidden" value="0"> <input name="shiftstogether" type="checkbox">Yes, I am a glutton for punishment!<br>
+	<br>
+	<li><strong>As an experiment, to help us in the future as we update this form, please
+	    select how much you prefer doing the three
+	    different kinds of shifts. </strong> <br>
+	      Please mark the task(s) you prefer the most as a 5, and the task(s) you
+	  prefer the least as 1. <br>
+	  1 := I strongly prefer not to do this task.<br>
+	  3 := Feel free to assign me some of this task if the meal system needs it.<br>
+	  5 := I typically sign up for / strongly prefer to be assigned this task. <br>
+	  You can assign different tasks the same number. To be the most useful, everyone should have
+	    at least one task marked with a 5, to designate the task that you typically sign up for. We are looking into whether this could help automate shift assignments. <br>
+	cook: <input name="cook1" type="hidden" value="0"> <input name="cook1" type="checkbox" /> 1
+	<input name="cook2" type="hidden" value="0"> <input name="cook2" type="checkbox" /> 2
+	<input name="cook3" type="hidden" value="0"> <input name="cook3" type="checkbox" /> 3
+	<input name="cook4" type="hidden" value="0"> <input name="cook4" type="checkbox" /> 4
+	<input name="cook5" type="hidden" value="0"> <input name="cook5" type="checkbox" /> 5 <br>
+	assist: <input name="assist1" type="hidden" value="0"> <input name="assist1" type="checkbox" /> 1
+	<input name="assist2" type="hidden" value="0"> <input name="assist2" type="checkbox" /> 2
+	<input name="assist3" type="hidden" value="0"> <input name="assist3" type="checkbox" /> 3
+	<input name="assist4" type="hidden" value="0"> <input name="assist4" type="checkbox" /> 4
+	<input name="assist5" type="hidden" value="0"> <input name="assist5" type="checkbox" /> 5 <br>
+	clean: <input name="clean1" type="hidden" value="0"> <input name="clean1" type="checkbox" /> 1
+	<input name="clean2" type="hidden" value="0"> <input name="clean2" type="checkbox" /> 2
+	<input name="clean3" type="hidden" value="0"> <input name="clean3" type="checkbox" /> 3
+	<input name="clean4" type="hidden" value="0"> <input name="clean4" type="checkbox" /> 4
+	<input name="clean5" type="hidden" value="0"> <input name="clean5" type="checkbox" /> 5 <br>
+	</li><br>
+	<li><strong>Are you a co-housing kid (age 15-22)?</strong><br>
+	<input name="gardenerkid" type="hidden" value="0"> <input name="gardenerkid" type="checkbox">Yes, I am a co-housing kid.<br>
+<strong> Garden team </strong> -- please get in touch wtih Sarah to figure out the gardener credit for this round. <br>
+	</li><br>
+	<li><strong>Cooks Only: Please schedule the following person as my assistant, if possible:</strong><br />
+	<input name="cookassist" type="hidden" value="any" /> <input name="cookassist" type="text" value="any" /><br />
+	</li> <br>
+	<li><strong>Cooks Only: Because of a birthday/special occasion, I would like to cook on the following date, if possible:</strong><br />
+	<input name="cookdate" type="hidden" value="none"> <input name="cookdate" type="text" value="none" /><br />
+	</li> <br>
+	<li><strong>Cooks Only: Do you strongly prefer to cook on Sundays?</strong> (Sundays will be apportioned as equally as possible.)<br />
+	<input name="cooksunday" type="hidden" value="0"> <input name="cooksunday" type="checkbox" />Yes, I strongly prefer to cook on Sundays, but I understand that there aren&#39;t necessarily enough to go around.<br />
+	</li><br>
+<!--	<li><strong>Would you be willing to *volunteer* to put up the sign up for a potluck dinner?</strong> (Cleaners will be assigned as per usual, you are not signing up to clean.)<br />
+	<input name="volPot" type="hidden" value="0"> <input name="volPot" type="checkbox" />Yes, I will volunteer to put up the sign up for a potluck.<br />
+	&nbsp;</li>
+	<li><strong>I am willing to volunteer in some other fashion!</strong><br />
+	<input name="volOther" type="hidden" value="none" /> <input name="volOther" size="100" type="text" /><br />
+	&nbsp;</li>-->
+	<li><strong>Any comments or questions?</strong><br>
+        <input name="comments" type="hidden" value="none" />
+        <input name="comments" size="100" type="text" /><br /></li><br>
+	<li><strong>Please indicate below the days and shifts for which you are UNAVAILABLE.</strong><br />
+	Please select dates for which you are definitely <strong>unable</strong> to work.<br />
+	<br>
+	Note that the days around holidays
+	<!--(e.g., Sun/Mon of Indiginous People's Day, Haloween, Weds before Thanksgiving) -->
+	will only be put on the meal schedule if
+	enough folks show that they are available. Please be sure to mark yourself
+	as <strong>unavailable</strong> if you would not eat (or want to
+	work) on/near the holidays.<br>
+	<script>$(document).ready(function(){
+  $('#allco').click(function () {$(':checkbox.Cook').prop('checked', this.checked);});
+  $('#allas').click(function () {$(':checkbox.Assist').prop('checked', this.checked);});
+  $('#allcl').click(function () {$(':checkbox.Clean').prop('checked', this.checked);});
+  });
+</script><br />
+	You can use these controls to help auto fill the form below.<br />
+	<input id="allco" type="checkbox" />Never Cook <input id="allas" type="checkbox" />Never Assist <input id="allcl" type="checkbox" />Never Clean<br />
+	<br />
+	<strong> EVERYONE: Please show availability for at least one
+	cleaning shift. </strong> We'll only use it if we need it!</li> <br>
+	<strong><script>document.write(allDates[7].slice(0,3))</script></strong>
+	<table border="1" border-radius="15" style="width:100%">
+		<tbody>
+			<tr align="center">
+				<td style="width:14.286%">Sunday</td>
+				<td style="width:14.286%">Monday</td>
+				<td style="width:14.286%">Tuesday</td>
+				<td style="width:14.286%">Wednesday</td>
+				<td style="width:14.286%">Thursday</td>
+				<td style="width:14.286%">Friday</td>
+				<td style="width:14.286%">Saturday</td>
+			</tr>
+			<tr>
+				<td>
+				<pre>
+<strong><script>document.write(allDates[0].slice(4,6))</script> </strong>
+  <input name="cook11" type="hidden" value="1" />
+  <input class="css-checkbox Cook" id="cook11" name="cook11" type="checkbox" /><label class="css-label lite-x-gray" for="cook11" name="cook11_lbl">Cook</label>
+  <input name="assist11" type="hidden" value="1" />
+  <input class="css-checkbox Assist" id="assist11" name="assist11" type="checkbox" /><label class="css-label lite-x-gray" for="assist11" name="assist11_lbl">Assist</label>
+  <input name="clean11" type="hidden" value="1" />
+  <input class="css-checkbox Clean" id="clean11" name="clean11" type="checkbox" /><label class="css-label lite-x-gray" for="clean11" name="clean11_lbl">Clean</label></pre>
+				</td>
+				<td>
+				<pre>
+<strong><script>document.write(allDates[1].slice(4,6))</script>  </strong>
+  <input name="cook12" type="hidden" value="1" />
+  <input class="css-checkbox Cook" id="cook12" name="cook12" type="checkbox" /><label class="css-label lite-x-gray" for="cook12" name="cook12_lbl">Cook</label>
+  <input name="assist12" type="hidden" value="1" />
+  <input class="css-checkbox Assist" id="assist12" name="assist12" type="checkbox" /><label class="css-label lite-x-gray" for="assist12" name="assist12_lbl">Assist</label>
+  <input name="clean12" type="hidden" value="1" />
+  <input class="css-checkbox Clean" id="clean12" name="clean12" type="checkbox" /><label class="css-label lite-x-gray" for="clean12" name="clean12_lbl">Clean</label></pre>
+				</td>
+				<td>
+				<pre>
+<strong><script>document.write(allDates[2].slice(4,6))</script>  </strong>
+  <input name="cook13" type="hidden" value="1" />
+  <input class="css-checkbox Cook" id="cook13" name="cook13" type="checkbox" /><label class="css-label lite-x-gray" for="cook13" name="cook13_lbl">Cook</label>
+  <input name="assist13" type="hidden" value="1" />
+  <input class="css-checkbox Assist" id="assist13" name="assist13" type="checkbox" /><label class="css-label lite-x-gray" for="assist13" name="assist13_lbl">Assist</label>
+  <input name="clean13" type="hidden" value="1" />
+  <input class="css-checkbox Clean" id="clean13" name="clean13" type="checkbox" /><label class="css-label lite-x-gray" for="clean13" name="clean13_lbl">Clean</label></pre>
+				</td>
+				<td>
+				<pre>
+<strong><script>document.write(allDates[3].slice(4,6))</script></strong>
+  <input name="cook14" type="hidden" value="1" />
+  <input class="css-checkbox Cook" id="cook14" name="cook14" type="checkbox" /><label class="css-label lite-x-gray" for="cook14" name="cook14_lbl">Cook</label>
+  <input name="assist14" type="hidden" value="1" />
+  <input class="css-checkbox Assist" id="assist14" name="assist14" type="checkbox" /><label class="css-label lite-x-gray" for="assist14" name="assist14_lbl">Assist</label>
+  <input name="clean14" type="hidden" value="1" />
+  <input class="css-checkbox Clean" id="clean14" name="clean14" type="checkbox" /><label class="css-label lite-x-gray" for="clean14" name="clean14_lbl">Clean</label></pre>
+				</td>
+				<td>
+				<pre>
+<strong><script>document.write(allDates[4].slice(4,6))</script> </strong>
+  <input name="cook15" type="hidden" value="1" />
+  <input class="css-checkbox Cook" id="cook15" name="cook15" type="checkbox" /><label class="css-label lite-x-gray" for="cook15" name="cook15_lbl">Cook</label>
+  <input name="assist15" type="hidden" value="1" />
+  <input class="css-checkbox Assist" id="assist15" name="assist15" type="checkbox" /><label class="css-label lite-x-gray" for="assist15" name="assist15_lbl">Assist</label>
+  <input name="clean15" type="hidden" value="1" />
+  <input class="css-checkbox Clean" id="clean15" name="clean15" type="checkbox" /><label class="css-label lite-x-gray" for="clean15" name="clean15_lbl">Clean</label></pre>
+				</td>
+				<td>
+				<pre>
+<strong><script>document.write(allDates[5].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook16" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist16" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean16" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[6].slice(4,6))</script>  Gen. Meeting</strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook17" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist17" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean17" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+    <td><pre><strong><script>document.write(allDates[7].slice(4,6))</script> Daylt Savings </strong>
+  <input type="hidden" name="cook21" value="1">
+  <input type="checkbox" name="cook21" id="cook21" class="css-checkbox Cook"><label for="cook21" name="cook21_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist21" value="1">
+  <input type="checkbox" name="assist21" id="assist21" class="css-checkbox Assist"><label for="assist21" name="assist21_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean21" value="1">
+  <input type="checkbox" name="clean21" id="clean21" class="css-checkbox Clean"><label for="clean21" name="clean21_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[8].slice(4,6))</script></strong>
+  <input type="hidden" name="cook22" value="1">
+  <input type="checkbox" name="cook22" id="cook22" class="css-checkbox Cook"><label for="cook22" name="cook22_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist22" value="1">
+  <input type="checkbox" name="assist22" id="assist22" class="css-checkbox Assist"><label for="assist22" name="assist22_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean22" value="1">
+  <input type="checkbox" name="clean22" id="clean22" class="css-checkbox Clean"><label for="clean22" name="clean22_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[9].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook23" value="1">
+  <input type="checkbox" name="cook23" id="cook23" class="css-checkbox Cook"><label for="cook23" name="cook23_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist23" value="1">
+  <input type="checkbox" name="assist23" id="assist23" class="css-checkbox Assist"><label for="assist23" name="assist23_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean23" value="1">
+  <input type="checkbox" name="clean23" id="clean23" class="css-checkbox Clean"><label for="clean23" name="clean23_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[10].slice(4,6))</script></strong>
+  <input type="hidden" name="cook24" value="1">
+  <input type="checkbox" name="cook24" id="cook24" class="css-checkbox Cook"><label for="cook24" name="cook24_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist24" value="1">
+  <input type="checkbox" name="assist24" id="assist24" class="css-checkbox Assist"><label for="assist24" name="assist24_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean24" value="1">
+  <input type="checkbox" name="clean24" id="clean24" class="css-checkbox Clean"><label for="clean24" name="clean24_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[11].slice(4,6))</script>  </strong>
+  <input type="hidden" name="cook25" value="1">
+  <input type="checkbox" name="cook25" id="cook25" class="css-checkbox Cook"><label for="cook25" name="cook25_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist25" value="1">
+  <input type="checkbox" name="assist25" id="assist25" class="css-checkbox Assist"><label for="assist25" name="assist25_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean25" value="1">
+  <input type="checkbox" name="clean25" id="clean25" class="css-checkbox Clean"><label for="clean25" name="clean25_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[12].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook26" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist26" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean26" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[13].slice(4,6))</script>  </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook27" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist27" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean27" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+    <td><pre><strong><script>document.write(allDates[14].slice(4,6))</script> St. Patrick's Day</strong>
+  <input type="hidden" name="cook31" value="1">
+  <input type="checkbox" name="cook31" id="cook31" class="css-checkbox Cook"><label for="cook31" name="cook31_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist31" value="1">
+  <input type="checkbox" name="assist31" id="assist31" class="css-checkbox Assist"><label for="assist31" name="assist31_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean31" value="1">
+  <input type="checkbox" name="clean31" id="clean31" class="css-checkbox Clean"><label for="clean31" name="clean31_lbl" class="css-label lite-x-gray">Clean</label> </pre></td>
+    <td><pre><strong><script>document.write(allDates[15].slice(4,6))</script></strong>
+  <input type="hidden" name="cook32" value="1">
+  <input type="checkbox" name="cook32" id="cook32" class="css-checkbox Cook"><label for="cook32" name="cook32_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist32" value="1">
+  <input type="checkbox" name="assist32" id="assist32" class="css-checkbox Assist"><label for="assist32" name="assist32_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean32" value="1">
+  <input type="checkbox" name="clean32" id="clean32" class="css-checkbox Clean"><label for="clean32" name="clean32_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[16].slice(4,6))</script></strong>
+  <input type="hidden" name="cook33" value="1">
+  <input type="checkbox" name="cook33" id="cook33" class="css-checkbox Cook"><label for="cook33" name="cook33_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist33" value="1">
+  <input type="checkbox" name="assist33" id="assist33" class="css-checkbox Assist"><label for="assist33" name="assist33_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean33" value="1">
+  <input type="checkbox" name="clean33" id="clean33" class="css-checkbox Clean"><label for="clean33" name="clean33_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[17].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook34" value="1">
+  <input type="checkbox" name="cook34" id="cook34" class="css-checkbox Cook"><label for="cook34" name="cook34_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist34" value="1">
+  <input type="checkbox" name="assist34" id="assist34" class="css-checkbox Assist"><label for="assist34" name="assist34_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean34" value="1">
+  <input type="checkbox" name="clean34" id="clean34" class="css-checkbox Clean"><label for="clean34" name="clean34_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[18].slice(4,6))</script></strong>
+  <input type="hidden" name="cook35" value="1">
+  <input type="checkbox" name="cook35" id="cook35" class="css-checkbox Cook"><label for="cook35" name="cook35_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist35" value="1">
+  <input type="checkbox" name="assist35" id="assist35" class="css-checkbox Assist"><label for="assist35" name="assist35_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean35" value="1">
+  <input type="checkbox" name="clean35" id="clean35" class="css-checkbox Clean"><label for="clean35" name="clean35_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[19].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook36" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist36" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean36" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[20].slice(4,6))</script>  </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook37" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist37" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean37" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+  <td><pre><strong><script>document.write(allDates[21].slice(4,6))</script></strong>
+  <input type="hidden" name="cook41" value="1">
+  <input type="checkbox" name="cook41" id="cook41" class="css-checkbox Cook"><label for="cook41" name="cook41_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist41" value="1">
+  <input type="checkbox" name="assist41" id="assist41" class="css-checkbox Assist"><label for="assist41" name="assist41_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean41" value="1">
+  <input type="checkbox" name="clean41" id="clean41" class="css-checkbox Clean"><label for="clean41" name="clean41_lbl" class="css-label lite-x-gray">Clean</label> </pre></td>
+  <td><pre><strong><script>document.write(allDates[22].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook42" value="1">
+  <input type="checkbox" name="cook42" id="cook42" class="css-checkbox Cook"><label for="cook42" name="cook42_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist42" value="1">
+  <input type="checkbox" name="assist42" id="assist42" class="css-checkbox Assist"><label for="assist42" name="assist42_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean42" value="1">
+  <input type="checkbox" name="clean42" id="clean42" class="css-checkbox Clean"><label for="clean42" name="clean42_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+  <td><pre><strong><script>document.write(allDates[23].slice(4,6))</script></strong>
+  <input type="hidden" name="cook43" value="1">
+  <input type="checkbox" name="cook43" id="cook43" class="css-checkbox Cook"><label for="cook43" name="cook43_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist43" value="1">
+  <input type="checkbox" name="assist43" id="assist43" class="css-checkbox Assist"><label for="assist43" name="assist43_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean43" value="1">
+  <input type="checkbox" name="clean43" id="clean43" class="css-checkbox Clean"><label for="clean43" name="clean43_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[24].slice(4,6))</script></strong>
+  <input type="hidden" name="cook44" value="1">
+  <input type="checkbox" name="cook44" id="cook44" class="css-checkbox Cook"><label for="cook44" name="cook44_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist44" value="1">
+  <input type="checkbox" name="assist44" id="assist44" class="css-checkbox Assist"><label for="assist44" name="assist44_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean44" value="1">
+  <input type="checkbox" name="clean44" id="clean44" class="css-checkbox Clean"><label for="clean44" name="clean44_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[25].slice(4,6))</script></strong>
+  <input type="hidden" name="cook45" value="1">
+  <input type="checkbox" name="cook45" id="cook45" class="css-checkbox Cook"><label for="cook45" name="cook45_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist45" value="1">
+  <input type="checkbox" name="assist45" id="assist45" class="css-checkbox Assist"><label for="assist45" name="assist45_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean45" value="1">
+  <input type="checkbox" name="clean45" id="clean45" class="css-checkbox Clean"><label for="clean45" name="clean45_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[26].slice(4,6))</script> </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook46" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist46" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean46" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[27].slice(4,6))</script> </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook47" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist47" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean47" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  </table>
+<br>
+<strong><script>document.write(allDates[39].slice(0,3))</script> </strong>
+<table style="width:100%" border="1">
+  <tr align="center">
+    <td style="width:14.286%"> Sunday</td>
+    <td style="width:14.286%">Monday</td>
+    <td style="width:14.286%">Tuesday</td>
+    <td style="width:14.286%">Wednesday</td>
+    <td style="width:14.286%">Thursday</td>
+    <td style="width:14.286%">Friday</td>
+    <td style="width:14.286%">Saturday</td>
+  </tr>
+  <tr>
+      <tr>
+  <td><pre><strong><script>document.write(allDates[28].slice(4,6))</script> Forum </strong>
+  <input type="hidden" name="cook51" value="1">
+  <input type="checkbox" name="cook51" id="cook51" class="css-checkbox Cook"><label for="cook51" name="cook51_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist51" value="1">
+  <input type="checkbox" name="assist51" id="assist51" class="css-checkbox Assist"><label for="assist51" name="assist51_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean51" value="1">
+  <input type="checkbox" name="clean51" id="clean51" class="css-checkbox Clean"><label for="clean51" name="clean51_lbl" class="css-label lite-x-gray">Clean</label> </pre></td>
+  <td><pre><strong><script>document.write(allDates[29].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook52" value="1">
+  <input type="checkbox" name="cook52" id="cook52" class="css-checkbox Cook"><label for="cook52" name="cook52_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist52" value="1">
+  <input type="checkbox" name="assist52" id="assist52" class="css-checkbox Assist"><label for="assist52" name="assist52_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean52" value="1">
+  <input type="checkbox" name="clean52" id="clean52" class="css-checkbox Clean"><label for="clean52" name="clean52_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+  <td><pre><strong><script>document.write(allDates[30].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook53" value="1">
+  <input type="checkbox" name="cook53" id="cook53" class="css-checkbox Cook"><label for="cook53" name="cook53_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist53" value="1">
+  <input type="checkbox" name="assist53" id="assist53" class="css-checkbox Assist"><label for="assist53" name="assist53_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean53" value="1">
+  <input type="checkbox" name="clean53" id="clean53" class="css-checkbox Clean"><label for="clean53" name="clean53_lbl" class="css-label lite-x-gray">Clean</label> </pre></td>
+  <td><pre><strong><script>document.write(allDates[31].slice(4,6))</script></strong>
+  <input type="hidden" name="cook54" value="1">
+  <input type="checkbox" name="cook54" id="cook54" class="css-checkbox Cook"><label for="cook54" name="cook54_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist54" value="1">
+  <input type="checkbox" name="assist54" id="assist54" class="css-checkbox Assist"><label for="assist54" name="assist54_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean54" value="1">
+  <input type="checkbox" name="clean54" id="clean54" class="css-checkbox Clean"><label for="clean54" name="clean54_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+  <td><pre><strong><script>document.write(allDates[32].slice(4,6))</script></strong>
+  <input type="hidden" name="cook55" value="1">
+  <input type="checkbox" name="cook55" id="cook55" class="css-checkbox Cook"><label for="cook55" name="cook55_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist55" value="1">
+  <input type="checkbox" name="assist55" id="assist55" class="css-checkbox Assist"><label for="assist55" name="assist55_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean55" value="1">
+  <input type="checkbox" name="clean55" id="clean55" class="css-checkbox Clean"><label for="clean55" name="clean55_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+  <td><pre><strong><script>document.write(allDates[33].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook56" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist56" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean56" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[34].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook57" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist57" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean57" class="Clean" value="1"> Clean --></pre></td>
+</tr>
+
+  <td><pre><strong><script>document.write(allDates[35].slice(4,6))</script></strong>
+  <input type="hidden" name="cook61" value="1">
+  <input type="checkbox" name="cook61" id="cook61" class="css-checkbox Cook"><label for="cook61" name="cook61_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist61" value="1">
+  <input type="checkbox" name="assist61" id="assist61" class="css-checkbox Assist"><label for="assist61" name="assist61_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean61" value="1">
+  <input type="checkbox" name="clean61" id="clean61" class="css-checkbox Clean"><label for="clean61" name="clean61_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[36].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook62" value="1">
+  <input type="checkbox" name="cook62" id="cook62" class="css-checkbox Cook"><label for="cook62" name="cook62_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist62" value="1">
+  <input type="checkbox" name="assist62" id="assist62" class="css-checkbox Assist"><label for="assist62" name="assist62_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean62" value="1">
+  <input type="checkbox" name="clean62" id="clean62" class="css-checkbox Clean"><label for="clean62" name="clean62_lbl" class="css-label lite-x-gray">Clean</label> </pre></td>
+    <td><pre><strong><script>document.write(allDates[37].slice(4,6))</script>  </strong>
+  <input type="hidden" name="cook63" value="1">
+  <input type="checkbox" name="cook63" id="cook63" class="css-checkbox Cook"><label for="cook63" name="cook63_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist63" value="1">
+  <input type="checkbox" name="assist63" id="assist63" class="css-checkbox Assist"><label for="assist63" name="assist63_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean63" value="1">
+  <input type="checkbox" name="clean63" id="clean63" class="css-checkbox Clean"><label for="clean63" name="clean63_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[38].slice(4,6))</script>  </strong>
+  <input type="hidden" name="cook64" value="1">
+  <input type="checkbox" name="cook64" id="cook64" class="css-checkbox Cook"><label for="cook64" name="cook64_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist64" value="1">
+  <input type="checkbox" name="assist64" id="assist64" class="css-checkbox Assist"><label for="assist64" name="assist64_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean64" value="1">
+  <input type="checkbox" name="clean64" id="clean64" class="css-checkbox Clean"><label for="clean64" name="clean64_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[39].slice(4,6))</script></strong>
+  <input type="hidden" name="cook65" value="1">
+  <input type="checkbox" name="cook65" id="cook65" class="css-checkbox Cook"><label for="cook65" name="cook65_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist65" value="1">
+  <input type="checkbox" name="assist65" id="assist65" class="css-checkbox Assist"><label for="assist65" name="assist65_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean65" value="1">
+  <input type="checkbox" name="clean65" id="clean65" class="css-checkbox Clean"><label for="clean65" name="clean65_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[40].slice(4,6))</script>  </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook66" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist66" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean66" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[41].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook67" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist67" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean67" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+    <td><pre><strong><script>document.write(allDates[42].slice(4,6))</script> Gen. Mtg.</strong>
+  <input type="hidden" name="cook71" value="1">
+  <input type="checkbox" name="cook71" id="cook71" class="css-checkbox Cook"><label for="cook71" name="cook71_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist71" value="1">
+  <input type="checkbox" name="assist71" id="assist71" class="css-checkbox Assist"><label for="assist71" name="assist71_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean71" value="1">
+  <input type="checkbox" name="clean71" id="clean71" class="css-checkbox Clean"><label for="clean71" name="clean71_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[43].slice(4,6))</script>  </strong>
+  <input type="hidden" name="cook72" value="1">
+  <input type="checkbox" name="cook72" id="cook72" class="css-checkbox Cook"><label for="cook72" name="cook72_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist72" value="1">
+  <input type="checkbox" name="assist72" id="assist72" class="css-checkbox Assist"><label for="assist72" name="assist72_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean72" value="1">
+  <input type="checkbox" name="clean72" id="clean72" class="css-checkbox Clean"><label for="clean72" name="clean72_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[44].slice(4,6))</script></strong>
+  <input type="hidden" name="cook73" value="1">
+  <input type="checkbox" name="cook73" id="cook73" class="css-checkbox Cook"><label for="cook73" name="cook73_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist73" value="1">
+  <input type="checkbox" name="assist73" id="assist73" class="css-checkbox Assist"><label for="assist73" name="assist73_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean73" value="1">
+  <input type="checkbox" name="clean73" id="clean73" class="css-checkbox Clean"><label for="clean73" name="clean73_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[45].slice(4,6))</script></strong>
+  <input type="hidden" name="cook74" value="1">
+  <input type="checkbox" name="cook74" id="cook74" class="css-checkbox Cook"><label for="cook74" name="cook74_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist74" value="1">
+  <input type="checkbox" name="assist74" id="assist74" class="css-checkbox Assist"><label for="assist74" name="assist74_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean74" value="1">
+  <input type="checkbox" name="clean74" id="clean74" class="css-checkbox Clean"><label for="clean74" name="clean74_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[46].slice(4,6))</script></strong>
+  <input type="hidden" name="cook75" value="1">
+  <input type="checkbox" name="cook75" id="cook75" class="css-checkbox Cook"><label for="cook75" name="cook75_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist75" value="1">
+  <input type="checkbox" name="assist75" id="assist75" class="css-checkbox Assist"><label for="assist75" name="assist75_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean75" value="1">
+  <input type="checkbox" name="clean75" id="clean75" class="css-checkbox Clean"><label for="clean75" name="clean75_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[47].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook76" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist76" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean76" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[48].slice(4,6))</script> Passover </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook77" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist77" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean77" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+    <td><pre><strong><script>document.write(allDates[49].slice(4,6))</script> Passover / Easter <br> ~~ BRUNCH! ~~ </strong>
+  <input type="hidden" name="cook81" value="1">
+  <input type="checkbox" name="cook81" id="cook81" class="css-checkbox Cook"><label for="cook81" name="cook81_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist81" value="1">
+  <input type="checkbox" name="assist81" id="assist81" class="css-checkbox Assist"><label for="assist81" name="assist81_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean81" value="1">
+  <input type="checkbox" name="clean81" id="clean81" class="css-checkbox Clean"><label for="clean81" name="clean81_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[50].slice(4,6))</script> Passover </strong>
+  <input type="hidden" name="cook82" value="1">
+  <input type="checkbox" name="cook82" id="cook82" class="css-checkbox Cook"><label for="cook82" name="cook82_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist82" value="1">
+  <input type="checkbox" name="assist82" id="assist82" class="css-checkbox Assist"><label for="assist82" name="assist82_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean82" value="1">
+  <input type="checkbox" name="clean82" id="clean82" class="css-checkbox Clean"><label for="clean82" name="clean82_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[51].slice(4,6))</script> Passover </strong>
+  <input type="hidden" name="cook83" value="1">
+  <input type="checkbox" name="cook83" id="cook83" class="css-checkbox Cook"><label for="cook83" name="cook83_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist83" value="1">
+  <input type="checkbox" name="assist83" id="assist83" class="css-checkbox Assist"><label for="assist83" name="assist83_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean83" value="1">
+  <input type="checkbox" name="clean83" id="clean83" class="css-checkbox Clean"><label for="clean83" name="clean83_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[52].slice(4,6))</script> Passover </strong>
+  <input type="hidden" name="cook84" value="1">
+  <input type="checkbox" name="cook84" id="cook84" class="css-checkbox Cook"><label for="cook84" name="cook84_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist84" value="1">
+  <input type="checkbox" name="assist84" id="assist84" class="css-checkbox Assist"><label for="assist84" name="assist84_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean84" value="1">
+  <input type="checkbox" name="clean84" id="clean84" class="css-checkbox Clean"><label for="clean84" name="clean84_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[53].slice(4,6))</script> Passover </strong>
+  <input type="hidden" name="cook85" value="1">
+  <input type="checkbox" name="cook85" id="cook85" class="css-checkbox Cook"><label for="cook85" name="cook85_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist85" value="1">
+  <input type="checkbox" name="assist85" id="assist85" class="css-checkbox Assist"><label for="assist85" name="assist85_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean85" value="1">
+  <input type="checkbox" name="clean85" id="clean85" class="css-checkbox Clean"><label for="clean85" name="clean85_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[54].slice(4,6))</script> Passover </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook86" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist86" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean86" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[55].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook87" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist87" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean87" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+    <tr>
+    <td><pre><strong><script>document.write(allDates[56].slice(4,6))</script> Forum </strong>
+  <input type="hidden" name="cook91" value="1">
+  <input type="checkbox" name="cook91" id="cook91" class="css-checkbox Cook"><label for="cook91" name="cook91_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist91" value="1">
+  <input type="checkbox" name="assist91" id="assist91" class="css-checkbox Assist"><label for="assist91" name="assist91_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean91" value="1">
+  <input type="checkbox" name="clean91" id="clean91" class="css-checkbox Clean"><label for="clean91" name="clean91_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[57].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook92" value="1">
+  <input type="checkbox" name="cook92" id="cook92" class="css-checkbox Cook"><label for="cook92" name="cook92_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist92" value="1">
+  <input type="checkbox" name="assist92" id="assist92" class="css-checkbox Assist"><label for="assist92" name="assist92_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean92" value="1">
+  <input type="checkbox" name="clean92" id="clean92" class="css-checkbox Clean"><label for="clean92" name="clean92_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[58].slice(4,6))</script></strong>
+  <input type="hidden" name="cook93" value="1">
+  <input type="checkbox" name="cook93" id="cook93" class="css-checkbox Cook"><label for="cook93" name="cook93_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist93" value="1">
+  <input type="checkbox" name="assist93" id="assist93" class="css-checkbox Assist"><label for="assist93" name="assist93_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean93" value="1">
+  <input type="checkbox" name="clean93" id="clean93" class="css-checkbox Clean"><label for="clean93" name="clean93_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[59].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook94" value="1">
+  <input type="checkbox" name="cook94" id="cook94" class="css-checkbox Cook"><label for="cook94" name="cook94_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist94" value="1">
+  <input type="checkbox" name="assist94" id="assist94" class="css-checkbox Assist"><label for="assist94" name="assist94_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean94" value="1">
+  <input type="checkbox" name="clean94" id="clean94" class="css-checkbox Clean"><label for="clean94" name="clean94_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[60].slice(4,6))</script></strong>
+  <input type="hidden" name="cook95" value="1">
+  <input type="checkbox" name="cook95" id="cook95" class="css-checkbox Cook"><label for="cook95" name="cook95_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist95" value="1">
+  <input type="checkbox" name="assist95" id="assist95" class="css-checkbox Assist"><label for="assist95" name="assist95_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean95" value="1">
+  <input type="checkbox" name="clean95" id="clean95" class="css-checkbox Clean"><label for="clean95" name="clean95_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[61].slice(4,6))</script> </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook96" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist96" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean96" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[62].slice(4,6))</script> </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook97" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist97" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean97" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  </table>
+<br>
+<strong><script>document.write(allDates[69].slice(0,3))</script></strong>
+<table style="width:100%" border="1">
+  <tr align="center">
+    <td style="width:14.286%"> Sunday</td>
+    <td style="width:14.286%">Monday</td>
+    <td style="width:14.286%">Tuesday</td>
+    <td style="width:14.286%">Wednesday</td>
+    <td style="width:14.286%">Thursday</td>
+    <td style="width:14.286%">Friday</td>
+    <td style="width:14.286%">Saturday</td>
+  </tr>
+  <tr>
+    <td><pre><strong><script>document.write(allDates[63].slice(4,6))</script> Cinco de Mayo </strong>
+  <input type="hidden" name="cook101" value="1">
+  <input type="checkbox" name="cook101" id="cook101" class="css-checkbox Cook"><label for="cook101" name="cook101_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist101" value="1">
+  <input type="checkbox" name="assist101" id="assist101" class="css-checkbox Assist"><label for="assist101" name="assist101_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean101" value="1">
+  <input type="checkbox" name="clean101" id="clean101" class="css-checkbox Clean"><label for="clean101" name="clean101_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[64].slice(4,6))</script></strong>
+  <input type="hidden" name="cook102" value="1">
+  <input type="checkbox" name="cook102" id="cook102" class="css-checkbox Cook"><label for="cook102" name="cook102_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist102" value="1">
+  <input type="checkbox" name="assist102" id="assist102" class="css-checkbox Assist"><label for="assist102" name="assist102_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean102" value="1">
+  <input type="checkbox" name="clean102" id="clean102" class="css-checkbox Clean"><label for="clean102" name="clean102_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[65].slice(4,6))</script></strong>
+  <input type="hidden" name="cook103" value="1">
+  <input type="checkbox" name="cook103" id="cook103" class="css-checkbox Cook"><label for="cook103" name="cook103_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist103" value="1">
+  <input type="checkbox" name="assist103" id="assist103" class="css-checkbox Assist"><label for="assist103" name="assist103_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean103" value="1">
+  <input type="checkbox" name="clean103" id="clean103" class="css-checkbox Clean"><label for="clean103" name="clean103_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[66].slice(4,6))</script></strong>
+  <input type="hidden" name="cook104" value="1">
+  <input type="checkbox" name="cook104" id="cook104" class="css-checkbox Cook"><label for="cook104" name="cook104_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist104" value="1">
+  <input type="checkbox" name="assist104" id="assist104" class="css-checkbox Assist"><label for="assist104" name="assist104_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean104" value="1">
+  <input type="checkbox" name="clean104" id="clean104" class="css-checkbox Clean"><label for="clean104" name="clean104_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[67].slice(4,6))</script></strong>
+  <input type="hidden" name="cook105" value="1">
+  <input type="checkbox" name="cook105" id="cook105" class="css-checkbox Cook"><label for="cook105" name="cook105_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist105" value="1">
+  <input type="checkbox" name="assist105" id="assist105" class="css-checkbox Assist"><label for="assist105" name="assist105_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean105" value="1">
+  <input type="checkbox" name="clean105" id="clean105" class="css-checkbox Clean"><label for="clean105" name="clean105_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[68].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook106" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist106" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean106" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[69].slice(4,6))</script> Gen. Mtg </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook107" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist107" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean107" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+    <td><pre><strong><script>document.write(allDates[70].slice(4,6))</script> Mother's Day </strong>
+  <input type="hidden" name="cook111" value="1">
+  <input type="checkbox" name="cook111" id="cook111" class="css-checkbox Cook"><label for="cook111" name="cook111_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist111" value="1">
+  <input type="checkbox" name="assist111" id="assist111" class="css-checkbox Assist"><label for="assist111" name="assist111_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean111" value="1">
+  <input type="checkbox" name="clean111" id="clean111" class="css-checkbox Clean"><label for="clean111" name="clean111_lbl" class="css-label lite-x-gray">Clean</label> </pre></td>
+    <td><pre><strong><script>document.write(allDates[71].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook112" value="1">
+  <input type="checkbox" name="cook112" id="cook112" class="css-checkbox Cook"><label for="cook112" name="cook112_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist112" value="1">
+  <input type="checkbox" name="assist112" id="assist112" class="css-checkbox Assist"><label for="assist112" name="assist112_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean112" value="1">
+  <input type="checkbox" name="clean112" id="clean112" class="css-checkbox Clean"><label for="clean112" name="clean112_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[72].slice(4,6))</script></strong>
+  <input type="hidden" name="cook113" value="1">
+  <input type="checkbox" name="cook113" id="cook113" class="css-checkbox Cook"><label for="cook113" name="cook113_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist113" value="1">
+  <input type="checkbox" name="assist113" id="assist113" class="css-checkbox Assist"><label for="assist113" name="assist113_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean113" value="1">
+  <input type="checkbox" name="clean113" id="clean113" class="css-checkbox Clean"><label for="clean113" name="clean113_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[73].slice(4,6))</script></strong>
+  <input type="hidden" name="cook114" value="1">
+  <input type="checkbox" name="cook114" id="cook114" class="css-checkbox Cook"><label for="cook114" name="cook114_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist114" value="1">
+  <input type="checkbox" name="assist114" id="assist114" class="css-checkbox Assist"><label for="assist114" name="assist114_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean114" value="1">
+  <input type="checkbox" name="clean114" id="clean114" class="css-checkbox Clean"><label for="clean114" name="clean114_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[74].slice(4,6))</script></strong>
+  <input type="hidden" name="cook115" value="1">
+  <input type="checkbox" name="cook115" id="cook115" class="css-checkbox Cook"><label for="cook115" name="cook115_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist115" value="1">
+  <input type="checkbox" name="assist115" id="assist115" class="css-checkbox Assist"><label for="assist115" name="assist115_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean115" value="1">
+  <input type="checkbox" name="clean115" id="clean115" class="css-checkbox Clean"><label for="clean115" name="clean115_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[75].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook116" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist116" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean116" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[76].slice(4,6))</script> </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook117" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist117" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean117" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+    <td><pre><strong><script>document.write(allDates[77].slice(4,6))</script></strong>
+  <input type="hidden" name="cook121" value="1">
+  <input type="checkbox" name="cook121" id="cook121" class="css-checkbox Cook"><label for="cook121" name="cook121_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist121" value="1">
+  <input type="checkbox" name="assist121" id="assist121" class="css-checkbox Assist"><label for="assist121" name="assist121_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean121" value="1">
+  <input type="checkbox" name="clean121" id="clean121" class="css-checkbox Clean"><label for="clean121" name="clean121_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[78].slice(4,6))</script></strong>
+  <input type="hidden" name="cook122" value="1">
+  <input type="checkbox" name="cook122" id="cook122" class="css-checkbox Cook"><label for="cook122" name="cook122_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist122" value="1">
+  <input type="checkbox" name="assist122" id="assist122" class="css-checkbox Assist"><label for="assist122" name="assist122_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean122" value="1">
+  <input type="checkbox" name="clean122" id="clean122" class="css-checkbox Clean"><label for="clean122" name="clean122_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[79].slice(4,6))</script></strong>
+  <input type="hidden" name="cook123" value="1">
+  <input type="checkbox" name="cook123" id="cook123" class="css-checkbox Cook"><label for="cook123" name="cook123_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist123" value="1">
+  <input type="checkbox" name="assist123" id="assist123" class="css-checkbox Assist"><label for="assist123" name="assist123_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean123" value="1">
+  <input type="checkbox" name="clean123" id="clean123" class="css-checkbox Clean"><label for="clean123" name="clean123_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[80].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook124" value="1">
+  <input type="checkbox" name="cook124" id="cook124" class="css-checkbox Cook"><label for="cook124" name="cook124_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist124" value="1">
+  <input type="checkbox" name="assist124" id="assist124" class="css-checkbox Assist"><label for="assist124" name="assist124_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean124" value="1">
+  <input type="checkbox" name="clean124" id="clean124" class="css-checkbox Clean"><label for="clean124" name="clean124_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[81].slice(4,6))</script> </strong>
+  <input type="hidden" name="cook125" value="1">
+  <input type="checkbox" name="cook125" id="cook125" class="css-checkbox Cook"><label for="cook125" name="cook125_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist125" value="1">
+  <input type="checkbox" name="assist125" id="assist125" class="css-checkbox Assist"><label for="assist125" name="assist125_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean125" value="1">
+  <input type="checkbox" name="clean125" id="clean125" class="css-checkbox Clean"><label for="clean125" name="clean125_lbl" class="css-label lite-x-gray">Clean</label> </pre></td>
+    <td><pre><strong><script>document.write(allDates[82].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook126" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist126" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean126" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[83].slice(4,6))</script></strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook127" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist127" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean127" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+  <tr>
+    <td><pre><strong><script>document.write(allDates[84].slice(4,6))</script> Memorial Day W/e</strong>
+  <input type="hidden" name="cook131" value="1">
+  <input type="checkbox" name="cook131" id="cook131" class="css-checkbox Cook"><label for="cook131" name="cook131_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist131" value="1">
+  <input type="checkbox" name="assist131" id="assist131" class="css-checkbox Assist"><label for="assist131" name="assist131_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean131" value="1">
+  <input type="checkbox" name="clean131" id="clean131" class="css-checkbox Clean"><label for="clean131" name="clean131_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[85].slice(4,6))</script> Memorial Day </strong>
+  <input type="hidden" name="cook132" value="1">
+  <input type="checkbox" name="cook132" id="cook132" class="css-checkbox Cook"><label for="cook132" name="cook132_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist132" value="1">
+  <input type="checkbox" name="assist132" id="assist132" class="css-checkbox Assist"><label for="assist132" name="assist132_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean132" value="1">
+  <input type="checkbox" name="clean132" id="clean132" class="css-checkbox Clean"><label for="clean132" name="clean132_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[86].slice(4,6))</script></strong>
+  <input type="hidden" name="cook133" value="1">
+  <input type="checkbox" name="cook133" id="cook133" class="css-checkbox Cook"><label for="cook133" name="cook133_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist133" value="1">
+  <input type="checkbox" name="assist133" id="assist133" class="css-checkbox Assist"><label for="assist133" name="assist133_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean133" value="1">
+  <input type="checkbox" name="clean133" id="clean133" class="css-checkbox Clean"><label for="clean133" name="clean133_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[87].slice(4,6))</script></strong>
+  <input type="hidden" name="cook134" value="1">
+  <input type="checkbox" name="cook134" id="cook134" class="css-checkbox Cook"><label for="cook134" name="cook134_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist134" value="1">
+  <input type="checkbox" name="assist134" id="assist134" class="css-checkbox Assist"><label for="assist134" name="assist134_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean134" value="1">
+  <input type="checkbox" name="clean134" id="clean134" class="css-checkbox Clean"><label for="clean134" name="clean134_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[88].slice(4,6))</script> CoHo Conf. (OR) </strong>
+  <input type="hidden" name="cook135" value="1">
+  <input type="checkbox" name="cook135" id="cook135" class="css-checkbox Cook"><label for="cook135" name="cook135_lbl" class="css-label lite-x-gray">Cook</label>
+  <input type="hidden" name="assist135" value="1">
+  <input type="checkbox" name="assist135" id="assist135" class="css-checkbox Assist"><label for="assist135" name="assist135_lbl" class="css-label lite-x-gray">Assist</label>
+  <input type="hidden" name="clean135" value="1">
+  <input type="checkbox" name="clean135" id="clean135" class="css-checkbox Clean"><label for="clean135" name="clean135_lbl" class="css-label lite-x-gray">Clean</label></pre></td>
+    <td><pre><strong><script>document.write(allDates[89].slice(4,6))</script> CoHo Conf. (OR) </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook136" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist136" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean136" class="Clean" value="1"> Clean --></pre></td>
+    <td><pre><strong><script>document.write(allDates[90].slice(4,6))</script> CoHo Conf. (OR) </strong>
+
+
+  No Meal
+
+
+
+  <!-- <input type="checkbox" name="cook137" class="Cook" value="1"> Cook
+  <input type="checkbox" name="assist137" class="Assist" value="1"> Assist
+  <input type="checkbox" name="clean137" class="Clean" value="1"> Clean --></pre></td>
+<!--
+   To uncomment Friday or Saturday back in, simply remove the "No Meal" text, 3 newlines, and the comment characters like those you see around this one! <!-- and [dash]->
+-->
+  </tr>
+
+</table>
+<br>
+
+<!-- Don't clear form on submit (to allow new participant data to be identical; present it as an option; pop up to indicate submission -->
+</OL>
+<input type="submit" value="Submit"><input type="reset" value="Clear"><br>
+</form>
+</div>
+</body>
+</html>
