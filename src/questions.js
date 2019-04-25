@@ -113,17 +113,17 @@ class QuestionsComponent extends Component {
                     <li>
                         <strong>Cooks Only: Please schedule the following person as my assistant, if possible:</strong>
                         <br/>
-                        <Input name="cookassist" placeholder="any"/>
+                        <Input name="ckassist" placeholder="any"/>
                     </li>
                     <li>
                         <strong>Cooks Only: Because of a birthday/special occasion, I would like to cook on the following date, if possible:</strong>
                         <br/>
-                        <Input name="cookassist" placeholder="none"/>
+                        <Input name="ckdate" placeholder="none"/>
                     </li>
                     <li>
                         <strong>Cooks Only: Do you strongly prefer to cook on Sundays?</strong> (Sundays will be apportioned as equally as possible.)
                         <br/>
-                        <Checkbox name="cooksunday">Yes, I strongly prefer to cook on Sundays, but I understand that there aren't necessarily enough to go around.</Checkbox>
+                        <Checkbox name="cksunday">Yes, I strongly prefer to cook on Sundays, but I understand that there aren't necessarily enough to go around.</Checkbox>
                     </li>
                     <li>
                         <strong>Any comments or questions?</strong>
