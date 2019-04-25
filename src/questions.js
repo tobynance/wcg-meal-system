@@ -128,7 +128,7 @@ class QuestionsComponent extends Component {
                     <li>
                         <strong>Any comments or questions?</strong>
                         <br/>
-                        <Input name="comments" style={{width: "400px"}}/>
+                        <Input name="comments" style={{width: "700px"}}/>
                     </li>
                     <li>
                         <strong>Please indicate below the days and shifts for which you are UNAVAILABLE.</strong>
