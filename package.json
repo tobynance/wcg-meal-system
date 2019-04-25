@@ -22,6 +22,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "http://winslowcohousing.org/meals",
   "browserslist": [
     ">0.2%",
     "not dead",

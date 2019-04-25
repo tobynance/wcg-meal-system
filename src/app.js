@@ -15,6 +15,7 @@ export default class App extends Component {
           <form action="http://www.winslowcohousing.org/meals/cgi-bin/test_handler.php" method="POST" name="scheduleinfo">
             <Questions/>
             <Calendar/>
+              <button>Submit</button>
           </form>
 
         </div>
