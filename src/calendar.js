@@ -115,7 +115,7 @@ class DayComponent extends Component {
             borderTop: "1px solid black",
         };
         if (this.props.dayIndex > 0) {
-            styles.td.borderRight = "1px solid black";
+            styles.td.borderLeft = "1px solid black";
         }
         return styles;
     }

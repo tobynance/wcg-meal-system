@@ -103,7 +103,7 @@ export default class Checkbox extends React.Component {
             cursor: 'pointer',
             marginRight: "5px",
             fontSize: "28px",
-            paddingLeft: "5px",
+            textAlign: "center",
             ...this.props.style
         };
         if (this.isDisabled()) {
