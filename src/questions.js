@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Checkbox from "./components/checkbox";
-import Input from "./components/input";
+import QInput from "./components/qinput";
 import {connect} from "react-redux";
 import * as Actions from "./actions";
+import QCheck from "./components/qcheck";
 
 //**********************************************************************
 class QuestionsComponent extends Component {
@@ -13,22 +14,22 @@ class QuestionsComponent extends Component {
                 <ol>
                     <li>
                         <strong>Please enter your name:</strong><br/>
-                        <Input name="name"/>
+                        <QInput name="name"/>
                     </li>
                     <li>
                         <strong>Please select the average number of meals per week you want
                             to eat this cycle (Mar-May, 13 weeks total).</strong>
                         <br/>
                         To help, we've listed the estimated anticipated workload based on the past round.<br/>
-                        <Checkbox name="nmeals1">1 meal/week (4 assist/cleans or 2 cooks)</Checkbox>
-                        <Checkbox name="nmeals2">2 meal/week (7 assist/cleans or 3.5 cooks)</Checkbox>
-                        <Checkbox name="nmeals3">3 meal/week (10 assist/cleans or 5 cooks)</Checkbox>
-                        <Checkbox name="nmeals4">4 meal/week (13 assist/cleans or 6.5 cooks)</Checkbox>
-                        <Checkbox name="nmeals5">5 meal/week (13 assist/cleans or 6.5 cooks)</Checkbox>
-                        <Checkbox name="nmeals0-Volunteer">
+                        <QCheck name="nmeals1">1 meal/week (4 assist/cleans or 2 cooks)</QCheck>
+                        <QCheck name="nmeals2">2 meal/week (7 assist/cleans or 3.5 cooks)</QCheck>
+                        <QCheck name="nmeals3">3 meal/week (10 assist/cleans or 5 cooks)</QCheck>
+                        <QCheck name="nmeals4">4 meal/week (13 assist/cleans or 6.5 cooks)</QCheck>
+                        <QCheck name="nmeals5">5 meal/week (13 assist/cleans or 6.5 cooks)</QCheck>
+                        <QCheck name="nmeals0-Volunteer">
                             I'm not planning on being in the meal system this round,
                             but I'd like to volunteer to cook 2 meals this cycle. (Thank you!)
-                        </Checkbox>
+                        </QCheck>
                     </li>
                     <li>
                         <strong>NEW--ONE CLEAN PER CYCLE (if necessary): </strong>
@@ -40,7 +41,7 @@ class QuestionsComponent extends Component {
                         one clean shift per 3-month cycle. We know this isn't ideal, and
                         appreciate folks being willing to chip in. If you strongly prefer not to clean other than this one shift, please check this box:
                         <br/>
-                        <Checkbox name="noclean">
+                        <QCheck name="noclean">
                             <span>
                             I strongly prefer not to clean more than the 1 time (if required / if necessary).{" "}
                                 <strong>
@@ -49,14 +50,14 @@ class QuestionsComponent extends Component {
                             </strong>{" "}
                                 We'll only use it if we need it!
                             </span>
-                        </Checkbox>
+                        </QCheck>
                     </li>
                     <li>
                         <strong>Please schedule my shifts together if possible (cook & clean, or assist & clean).</strong>
                         <br/>
                         Please note that cleaning done during your normal cook or assist shift does not count towards your cleaning shift. You are still expected to complete a full cleaning shift with your cleaning partner, staying until the kitchen and dining room are clean.
                         <br/>
-                        <Checkbox name="shiftstogether">Yes, I am a glutton for punishment!</Checkbox>
+                        <QCheck name="shiftstogether">Yes, I am a glutton for punishment!</QCheck>
                     </li>
                     <li>
                         <strong>As an experiment, to help us in the future as we update this form, please
@@ -77,35 +78,35 @@ class QuestionsComponent extends Component {
                         <br/>
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
                             <span style={{paddingRight: "10px", width: "50px"}}>cook:</span>
-                            <Checkbox name="ncook1">1</Checkbox>
-                            <Checkbox name="ncook2">2</Checkbox>
-                            <Checkbox name="ncook3">3</Checkbox>
-                            <Checkbox name="ncook4">4</Checkbox>
-                            <Checkbox name="ncook5">5</Checkbox>
+                            <QCheck name="ncook1">1</QCheck>
+                            <QCheck name="ncook2">2</QCheck>
+                            <QCheck name="ncook3">3</QCheck>
+                            <QCheck name="ncook4">4</QCheck>
+                            <QCheck name="ncook5">5</QCheck>
                         </div>
 
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
                             <span style={{paddingRight: "10px", width: "50px"}}>assist:</span>
-                            <Checkbox name="nassist1">1</Checkbox>
-                            <Checkbox name="nassist2">2</Checkbox>
-                            <Checkbox name="nassist3">3</Checkbox>
-                            <Checkbox name="nassist4">4</Checkbox>
-                            <Checkbox name="nassist5">5</Checkbox>
+                            <QCheck name="nassist1">1</QCheck>
+                            <QCheck name="nassist2">2</QCheck>
+                            <QCheck name="nassist3">3</QCheck>
+                            <QCheck name="nassist4">4</QCheck>
+                            <QCheck name="nassist5">5</QCheck>
                         </div>
 
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
                             <span style={{paddingRight: "10px", width: "50px"}}>clean:</span>
-                            <Checkbox name="nclean1">1</Checkbox>
-                            <Checkbox name="nclean2">2</Checkbox>
-                            <Checkbox name="nclean3">3</Checkbox>
-                            <Checkbox name="nclean4">4</Checkbox>
-                            <Checkbox name="nclean5">5</Checkbox>
+                            <QCheck name="nclean1">1</QCheck>
+                            <QCheck name="nclean2">2</QCheck>
+                            <QCheck name="nclean3">3</QCheck>
+                            <QCheck name="nclean4">4</QCheck>
+                            <QCheck name="nclean5">5</QCheck>
                         </div>
                     </li>
                     <li>
                         <strong>Are you a co-housing kid (age 15-22)?</strong>
                         <br/>
-                        <Checkbox name="gardenerkid">Yes, I am a co-housing kid.</Checkbox>
+                        <QCheck name="gardenerkid">Yes, I am a co-housing kid.</QCheck>
                     </li>
                     <li>
                         <strong> Garden team </strong> -- please get in touch wtih Sarah to figure out the gardener credit for this round.
@@ -113,22 +114,22 @@ class QuestionsComponent extends Component {
                     <li>
                         <strong>Cooks Only: Please schedule the following person as my assistant, if possible:</strong>
                         <br/>
-                        <Input name="ckassist" placeholder="any"/>
+                        <QInput name="ckassist" placeholder="any"/>
                     </li>
                     <li>
                         <strong>Cooks Only: Because of a birthday/special occasion, I would like to cook on the following date, if possible:</strong>
                         <br/>
-                        <Input name="ckdate" placeholder="none"/>
+                        <QInput name="ckdate" placeholder="none"/>
                     </li>
                     <li>
                         <strong>Cooks Only: Do you strongly prefer to cook on Sundays?</strong> (Sundays will be apportioned as equally as possible.)
                         <br/>
-                        <Checkbox name="cksunday">Yes, I strongly prefer to cook on Sundays, but I understand that there aren't necessarily enough to go around.</Checkbox>
+                        <QCheck name="cksunday">Yes, I strongly prefer to cook on Sundays, but I understand that there aren't necessarily enough to go around.</QCheck>
                     </li>
                     <li>
                         <strong>Any comments or questions?</strong>
                         <br/>
-                        <Input name="comments" style={{width: "700px"}}/>
+                        <QInput name="comments" style={{width: "700px"}}/>
                     </li>
                     <li>
                         <strong>Please indicate below the days and shifts for which you are UNAVAILABLE.</strong>

@@ -16,14 +16,18 @@ export default class Input extends React.Component {
         readOnly: PropTypes.bool,
         ariaLabel: PropTypes.string,
         placeholder: PropTypes.string,
-        style: PropTypes.object
+        style: PropTypes.object,
+        value: PropTypes.string,
+        onChange: PropTypes.func
     };
 
     static defaultProps = {
         enabled: true,
         readOnly: false,
         ariaLabel: null,
-        style: {}
+        style: {},
+        value: undefined,
+        onChange: null
     };
 
     //******************************************************************
@@ -65,6 +69,8 @@ export default class Input extends React.Component {
             type="text"
             id={this.props.id}
             name={this.props.name}
+            value={this.props.value}
+            onChange={this.props.onChange}
             aria-label={this.props.ariaLabel}
             placeholder={this.props.placeholder}
             style={style}

@@ -4,20 +4,37 @@ import {config} from "./config"
 import {createCalendarData} from "./calendar-utils";
 
 //**********************************************************************
-const getInitialState = () => {
+function getClearedState() {
     return {
+        checkedStates: {},
+        inputValues: {},
         neverCook: false,
         neverAssist: false,
         neverClean: false,
         selectedShifts: [],
         config: createCalendarData(config),
     };
+}
+
+//**********************************************************************
+const getInitialState = () => {
+    if (window.sessionStorage["meal-system-state"]) {
+        return JSON.parse(window.sessionStorage["meal-system-state"]);
+    }
+    else {
+        return getClearedState();
+    }
 };
+
+//**********************************************************************
+function saveState(state) {
+    window.sessionStorage["meal-system-state"] = JSON.stringify(state);
+}
 
 //**********************************************************************
 export default function reducer(state=getInitialState(), action) {
     console.log("reducer: ", action);
-    return produce(state, (draft) => {
+    const newState = produce(state, (draft) => {
         switch (action.type) {
             case ACTION_TYPES.TOGGLE_SHIFT:
                 if (draft.selectedShifts.indexOf(action.shiftId) > -1) {
@@ -64,12 +81,35 @@ export default function reducer(state=getInitialState(), action) {
                     // add all the clean entries to selectedShifts
                     addAll(draft, "clean");
                 }
-
+                break;
+            case ACTION_TYPES.TOGGLE_CHECKED_STATE:
+                draft.checkedStates[action.name] = !Boolean(draft.checkedStates[action.name]);
+                break;
+            case ACTION_TYPES.SET_INPUT_VALUE:
+                draft.inputValues[action.name] = action.value;
+                break;
+            case ACTION_TYPES.CLEAR:
+                const clearedState = getClearedState();
+                // This is a little weird since I need to edit draft without creating a new object
+                const skipKeys = ["inputValues", "checkedStates"];
+                Object.keys(clearedState).forEach((key) => {
+                    if (skipKeys.indexOf(key) === -1) {
+                        draft[key] = clearedState[key];
+                    }
+                });
+                Object.keys(draft.inputValues).forEach((key) => {
+                    draft.inputValues[key] = "";
+                });
+                Object.keys(draft.checkedStates).forEach((key) => {
+                    draft.checkedStates[key] = false;
+                });
                 break;
             default:
-                return state;
+                break;
         }
     });
+    saveState(newState);
+    return newState;
 }
 
 //**********************************************************************
