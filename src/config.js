@@ -1,6 +1,6 @@
 export const config = {
     firstDay: "2019-06-02",
-    regularSchedule: 5,  // 5 means 5 meals a week - run through Thursday
+    regularSchedule: 4,  // 5 means 5 meals a week - run through Thursday
     labeledDates: {
         "2019-03-09": "Gen. Meeting",
         "2019-03-10": "Daylt Savings",
@@ -23,7 +23,15 @@ export const config = {
         "2019-05-30": "CoHo Conf. (OR)",
         "2019-05-31": "CoHo Conf. (OR)",
         "2019-06-01": "CoHo Conf. (OR)",
+        "2019-06-02": "Forum",
+        "2019-06-09": "Gen. Mtg.\n Laundry Users Mtg.",
+//        "2019-06-10": "Laundry Users Mtg.",
+	"2019-06-16": "Father's Day",
         "2019-07-04": "Fourth of July",
+        "2019-07-14": "Forum",
+        "2019-07-27": "Gen. Mtg.",
+	"2019-08-11": "Meal System Mtg",
+//	"2019-08-17": "Summer Extravaganza",
     },
     daysOff: [
         "2019-04-15"
