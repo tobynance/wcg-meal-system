@@ -26,7 +26,7 @@ export const config = {
         "2019-06-02": "Forum",
         "2019-06-09": "Gen. Mtg.\n Laundry Users Mtg.",
 //        "2019-06-10": "Laundry Users Mtg.",
-	"2019-06-16": "Father's Day",
+	"2019-06-16": "Father's Day\n ~~BRUNCH~~",
         "2019-07-04": "Fourth of July",
         "2019-07-14": "Forum",
         "2019-07-27": "Gen. Mtg.",

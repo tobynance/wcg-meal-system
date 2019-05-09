@@ -25,8 +25,9 @@ class QuestionsComponent extends Component {
                         <QCheck name="nmeals2">2 meal/week (7 assist/cleans or 3.5 cooks)</QCheck>
                         <QCheck name="nmeals3">3 meal/week (10 assist/cleans or 5 cooks)</QCheck>
                         <QCheck name="nmeals4">4 meal/week (13 assist/cleans or 6.5 cooks)</QCheck>
-                        <QCheck name="nmeals5">5 meal/week (13 assist/cleans or 6.5 cooks)</QCheck>
-                        <QCheck name="nmeals0-Volunteer">
+{//                        <QCheck name="nmeals5">5 meal/week (13 assist/cleans or 6.5 cooks)</QCheck>
+}  
+                      <QCheck name="nmeals0-Volunteer">
                             I'm not planning on being in the meal system this round,
                             but I'd like to volunteer to cook 2 meals this cycle. (Thank you!)
                         </QCheck>
