@@ -18,7 +18,7 @@ class QuestionsComponent extends Component {
                     </li>
                     <li>
                         <strong>Please select the average number of meals per week you want
-                            to eat this cycle (Mar-May, 13 weeks total).</strong>
+                            to eat this cycle (Jun-Aug, 13 weeks total).</strong>
                         <br/>
                         To help, we've listed the estimated anticipated workload based on the past round.<br/>
                         <QCheck name="nmeals1">1 meal/week (4 assist/cleans or 2 cooks)</QCheck>
@@ -32,18 +32,16 @@ class QuestionsComponent extends Component {
                         </QCheck>
                     </li>
                     <li>
-                        <strong>NEW--ONE CLEAN PER CYCLE (if necessary): </strong>
+                        <strong>NEW-ISH--ONE CLEAN PER CYCLE (if necessary): </strong>
                         <br/>
-                        As noted in recent meal system
-                        discussions (meal system user meeting, general meeting, and in personal
-                        e-mails to those affected), we have experienced a significant lack of
-                        cleaners, and may need to ask everyone in the meal system to pick up
-                        one clean shift per 3-month cycle. We know this isn't ideal, and
-                        appreciate folks being willing to chip in. If you strongly prefer not to clean other than this one shift, please check this box:
+                        We have experienced a significant lack of cleaners in recent cycles. Last cycle we asked everyone in the meal system to pick up
+                        one clean shift, which was a huge help. Based on that round, I think we can get away with only extracting a clean from half of 
+                        the folks who usually don't clean. We know this isn't ideal, and appreciate folks being willing to chip in. Like last time, if 
+                        you strongly prefer not to clean other than this one shift, please check this box:
                         <br/>
                         <QCheck name="noclean">
                             <span>
-                            I strongly prefer not to clean more than the 1 time (if required / if necessary).{" "}
+                            I prefer to clean once at most.{" "}
                                 <strong>
                                 EVERYONE: Please show availability for at least one
                                 cleaning shift.
@@ -60,9 +58,8 @@ class QuestionsComponent extends Component {
                         <QCheck name="shiftstogether">Yes, I am a glutton for punishment!</QCheck>
                     </li>
                     <li>
-                        <strong>As an experiment, to help us in the future as we update this form, please
-                        select how much you prefer doing the three
-                        different kinds of shifts. </strong>
+                        <strong>Please select how much you prefer doing the three
+            different kinds of shifts. </strong> (In the future we are hoping to use this information to automate shift assignments.)
                         <br/>
                         Please mark the task(s) you prefer the most as a 5, and the task(s) you
                         prefer the least as 1.
@@ -73,8 +70,7 @@ class QuestionsComponent extends Component {
                         <br/>
                         5 := I typically sign up for / strongly prefer to be assigned this task.
                         <br/>
-                        You can assign different tasks the same number. To be the most useful, everyone should have
-                        at least one task marked with a 5, to designate the task that you typically sign up for. We are looking into whether this could help automate shift assignments.
+                        You can assign different tasks the same number.
                         <br/>
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
                             <span style={{paddingRight: "10px", width: "50px"}}>cook:</span>
@@ -132,25 +128,24 @@ class QuestionsComponent extends Component {
                         <QInput name="comments" style={{width: "700px"}}/>
                     </li>
                     <li>
-                        <strong>Please indicate below the days and shifts for which you are UNAVAILABLE.</strong>
+                        <strong>Please CROSS OUT the days and shifts for which you are UNAVAILABLE.</strong>
                         <br/>
                         Please select dates for which you are definitely <strong>unable</strong> to work.
                         <br/>
                         <br/>
-                            Note that the days around holidays
-                            {/*(e.g., Sun/Mon of Indiginous People's Day, Haloween, Weds before Thanksgiving)*/}
-                            will only be put on the meal schedule if
-                            enough folks show that they are available. Please be sure to mark yourself
-                            as <strong>unavailable</strong> if you would not eat (or want to
-                            work) on/near the holidays.
+{//                            Note that the days around holidays
+//                            {/*(e.g., Sun/Mon of Indiginous People's Day, Haloween, Weds before Thanksgiving)*/}
+//                            will only be put on the meal schedule if
+//                            enough folks show that they are available. Please be sure to mark yourself
+//                            as <strong>unavailable</strong> if you would not eat (or want to
+//                            work) on/near the holidays.
+//                        <br/>
+//                        <br/>
+}                        You can use these controls to help auto fill the form below.
                         <br/>
-                        <br/>
-                        You can use these controls to help auto fill the form below.
-                        <br/>
-                        <Checkbox checked={this.props.neverCook} onChange={this.props.toggleNeverCook} id="allco">Never Cook</Checkbox>
-                        <Checkbox checked={this.props.neverAssist} onChange={this.props.toggleNeverAssist} id="allas">Never Assist</Checkbox>
-                        <Checkbox checked={this.props.neverClean} onChange={this.props.toggleNeverClean} id="allcl">Never Clean</Checkbox>
-                        <br/>
+    <Checkbox checked={this.props.neverCook} onChange={this.props.toggleNeverCook} id="allco">Never Cook</Checkbox>
+    <Checkbox checked={this.props.neverAssist} onChange={this.props.toggleNeverAssist} id="allas">Never Assist</Checkbox>
+    <Checkbox checked={this.props.neverClean} onChange={this.props.toggleNeverClean} id="allcl">Never Clean</Checkbox>
                         <br/>
                         <strong> EVERYONE: Please show availability for at least one
                             cleaning shift. </strong> We'll only use it if we need it!
