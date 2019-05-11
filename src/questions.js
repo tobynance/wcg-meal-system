@@ -36,18 +36,12 @@ class QuestionsComponent extends Component {
                         <strong>NEW-ISH--ONE CLEAN PER CYCLE (if necessary): </strong>
                         <br/>
                         We have experienced a significant lack of cleaners in recent cycles. Last cycle we asked everyone in the meal system to pick up
-                        one clean shift, which was a huge help. Based on that round, I think we can get away with only extracting a clean from half of 
-                        the folks who usually don't clean. We know this isn't ideal, and appreciate folks being willing to chip in. Like last time, if 
-                        you strongly prefer not to clean other than this one shift, please check this box:
+one clean shift, which was a huge help. We may not need to extra cleaners with the 4 meals/wk schedule over the summer, but it's very hard to predict. So if we can go ahead and collect the data, only to be used if necessary, that would be very helpful! Like last time, if 
+    you prefer cooking and assiting only, please check this box:
                         <br/>
                         <QCheck name="noclean">
                             <span>
                             I prefer to clean once at most.{" "}
-                                <strong>
-                                EVERYONE: Please show availability for at least one
-                                cleaning shift.
-                            </strong>{" "}
-                                We'll only use it if we need it!
                             </span>
                         </QCheck>
                     </li>
@@ -124,6 +118,21 @@ class QuestionsComponent extends Component {
                         <QCheck name="cksunday">Yes, I strongly prefer to cook on Sundays, but I understand that there aren't necessarily enough to go around.</QCheck>
                     </li>
                     <li>
+                        <strong>Allergies and Sensitivities at WCG. </strong> We are rolling out a slightly-modified dinner sign-up sheet that inlcudes allergies and sensitivities. As discussed at the meal system meeting, to help the cooks, we are collecting family-specific info on the following allergies/sensitivies to be inlcuded on the meal form. Please select any of the following that apply to you.
+                        <br/>
+                        <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
+                            <QCheck name="avocado">avocado</QCheck>
+                            <QCheck name="banana">banana</QCheck>
+                            <QCheck name="cilantro">cilantro</QCheck>
+                            <QCheck name="coconut">coconut</QCheck>
+                            <QCheck name="gluten">gluten/wheat</QCheck>
+                            <QCheck name="dairy">dairy</QCheck>
+                            <QCheck name="dye">artificial dye</QCheck>
+                            <QCheck name="mango">mango</QCheck>
+                            <QCheck name="sugar">added sugar</QCheck>
+                        </div>
+                    </li>
+                    <li>
                         <strong>Any comments or questions?</strong>
                         <br/>
                         <QInput name="comments" style={{width: "700px"}}/>
@@ -148,8 +157,7 @@ class QuestionsComponent extends Component {
     <Checkbox checked={this.props.neverAssist} onChange={this.props.toggleNeverAssist} id="allas">Never Assist</Checkbox>
     <Checkbox checked={this.props.neverClean} onChange={this.props.toggleNeverClean} id="allcl">Never Clean</Checkbox>
                         <br/>
-                        <strong> EVERYONE: Please show availability for at least one
-                            cleaning shift. </strong> We'll only use it if we need it!
+    <strong> EVERYONE: Please provide some availability for cleaning shift. </strong> If you selected the tick box above, we'll only assign one, at most.
                     </li>
                 </ol>
             </div>
