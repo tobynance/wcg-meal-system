@@ -18,15 +18,15 @@ class QuestionsComponent extends Component {
                     </li>
                     <li>
                         <strong>Please select the average number of meals per week you want
-                            to eat this cycle (Jun-Aug, 13 weeks total).</strong>
+                            to eat this cycle (Dec-Feb, 13 weeks total).</strong>
                         <br/>
                         To help, we've listed the estimated anticipated workload based on the past round.<br/>
                         <QCheck name="nmeals1">1 meal/week (4 assist/cleans or 2 cooks)</QCheck>
                         <QCheck name="nmeals2">2 meal/week (7 assist/cleans or 3.5 cooks)</QCheck>
                         <QCheck name="nmeals3">3 meal/week (10 assist/cleans or 5 cooks)</QCheck>
                         <QCheck name="nmeals4">4 meal/week (13 assist/cleans or 6.5 cooks)</QCheck>
-{//                        <QCheck name="nmeals5">5 meal/week (13 assist/cleans or 6.5 cooks)</QCheck>
-}  
+                        <QCheck name="nmeals5">5 meal/week (13 assist/cleans or 6.5 cooks)</QCheck>
+  
                       <QCheck name="nmeals0-Volunteer">
                             I'm not planning on being in the meal system this round,
                             but I'd like to volunteer to cook 2 meals this cycle. (Thank you!)
@@ -35,8 +35,8 @@ class QuestionsComponent extends Component {
                     <li>
                         <strong>NEW-ISH--ONE CLEAN PER CYCLE (if necessary): </strong>
                         <br/>
-                        We have experienced a significant lack of cleaners in recent cycles. Last cycle we asked everyone in the meal system to pick up
-one clean shift, which was a huge help. We may not need to extra cleaners with the 4 meals/wk schedule over the summer, but it's very hard to predict. So if we can go ahead and collect the data, only to be used if necessary, that would be very helpful! Like last time, if 
+                        In recent cycles we have sometimes experienced a significant lack of cleaners, and eventually asked everyone in the meal system to pick up
+one clean shift, which was a huge help. We may not need it this round, but it's very hard to predict. So if we can go ahead and collect the data, only to be used if necessary, that would be very helpful! Like last time, if 
     you prefer cooking and assiting only, please check this box:
                         <br/>
                         <QCheck name="noclean">
@@ -118,17 +118,23 @@ one clean shift, which was a huge help. We may not need to extra cleaners with t
                         <QCheck name="cksunday">Yes, I strongly prefer to cook on Sundays, but I understand that there aren't necessarily enough to go around.</QCheck>
                     </li>
                     <li>
-                        <strong>Allergies and Sensitivities at WCG. </strong> We are rolling out a slightly-modified dinner sign-up sheet that inlcudes allergies and sensitivities. As discussed at the meal system meeting, to help the cooks, we are collecting family-specific info on the following allergies/sensitivies to be inlcuded on the meal form. Please select any of the following that apply to you.
+                        <strong>Allergies and Sensitivities at WCG. </strong> Last quarter we rolled out a slightly-modified dinner sign-up sheet that inlcudes allergies and sensitivities. If you have any <strong>changes</strong> please select the following that apply to your family. (Apologies for not having the edits from the last round included yet!)
                         <br/>
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
+                            <QCheck name="dye">artificial dye</QCheck>
                             <QCheck name="avocado">avocado</QCheck>
                             <QCheck name="banana">banana</QCheck>
                             <QCheck name="cilantro">cilantro</QCheck>
                             <QCheck name="coconut">coconut</QCheck>
-                            <QCheck name="gluten">gluten/wheat</QCheck>
                             <QCheck name="dairy">dairy</QCheck>
-                            <QCheck name="dye">artificial dye</QCheck>
+                            <QCheck name="eggs">eggs</QCheck>
+                            <QCheck name="fish">fish</QCheck>
+                            <QCheck name="gluten">gluten/wheat</QCheck>
                             <QCheck name="mango">mango</QCheck>
+                            <QCheck name="nuts">nuts</QCheck>
+                            <QCheck name="pork">pork</QCheck>
+                            <QCheck name="shellfish">shellfish</QCheck>
+                            <QCheck name="soy">soy</QCheck>
                             <QCheck name="sugar">added sugar</QCheck>
                         </div>
                     </li>
@@ -144,7 +150,6 @@ one clean shift, which was a huge help. We may not need to extra cleaners with t
                         <br/>
                         <br/>
 {//                            Note that the days around holidays
-//                            {/*(e.g., Sun/Mon of Indiginous People's Day, Haloween, Weds before Thanksgiving)*/}
 //                            will only be put on the meal schedule if
 //                            enough folks show that they are available. Please be sure to mark yourself
 //                            as <strong>unavailable</strong> if you would not eat (or want to
