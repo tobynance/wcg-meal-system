@@ -36,8 +36,8 @@ class QuestionsComponent extends Component {
                         <strong>NEW-ISH--ONE CLEAN PER CYCLE (if necessary): </strong>
                         <br/>
                         In recent cycles we have sometimes experienced a significant lack of cleaners, and eventually asked everyone in the meal system to pick up
-one clean shift, which was a huge help. We may not need it this round, but it's very hard to predict. So if we can go ahead and collect the data, only to be used if necessary, that would be very helpful! Like last time, if 
-    you prefer cooking and assiting only, please check this box:
+one clean shift, which was a huge help. We didn't end up needing it last round, but it's very hard to predict. So if we can go ahead and collect the data, only to be used if necessary, that would be very helpful! Like last time, if 
+    you prefer cooking and/or assiting only, please check this box:
                         <br/>
                         <QCheck name="noclean">
                             <span>
@@ -118,7 +118,7 @@ one clean shift, which was a huge help. We may not need it this round, but it's 
                         <QCheck name="cksunday">Yes, I strongly prefer to cook on Sundays, but I understand that there aren't necessarily enough to go around.</QCheck>
                     </li>
                     <li>
-                        <strong>Allergies and Sensitivities at WCG. </strong> Last quarter we rolled out a slightly-modified dinner sign-up sheet that inlcudes allergies and sensitivities. If you have any <strong>changes</strong> please select the following that apply to your family. (Apologies for not having the edits from the last round included yet!)
+                <strong>Allergies and Sensitivities at WCG. </strong> Last quarter we rolled out a modified dinner sign-up sheet that inlcudes allergies and sensitivities. The version with the latest edits is in use (starting w/ dinners on 11/17). If you have any <strong>changes</strong> please select the following that apply to your family.
                         <br/>
                         <div className="checkbox-group" style={{display: "flex", alignItems: "center"}}>
                             <QCheck name="dye">artificial dye</QCheck>

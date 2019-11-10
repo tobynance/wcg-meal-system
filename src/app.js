@@ -33,7 +33,7 @@ class AppComponent extends Component {
                 </header>
                 <p>Come and enjoy cozy meals and lively conversations with your neighbors to brighten up the dark winter evenings.</p>
                 <p>
-                    As usual, please submit a form for every perso.
+                    As usual, please submit a form for every person.
                     You will have the option of leaving the form filled out after you submit to make that easier.
                 </p>
                 <form action="http://www.winslowcohousing.org/meals/cgi-bin/test_handler.php" method="POST" name="scheduleinfo">
