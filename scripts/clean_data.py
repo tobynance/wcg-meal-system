@@ -93,7 +93,7 @@ def inject_missing_dates(fieldnames):
 
 ########################################################################
 def cleanup_output_fieldnames(fieldnames):
-    fieldnames = ["name", "ncook", "nasst", "nclean", "nmeals"] + fieldnames[1:]
+    fieldnames = ["num", "name", "ncook", "nasst", "nclean", "nmeals"] + fieldnames[1:]
     shifts_together_index = fieldnames.index("shiftstogether")
 
     assert shifts_together_index > 0, "Can't find column 'shiftstogether'!"
@@ -104,6 +104,7 @@ def cleanup_output_fieldnames(fieldnames):
     remove_fields(fieldnames, ['nclean1', 'nclean2', 'nclean3', 'nclean4', 'nclean5'])
     remove_fields(fieldnames, ['ncook1', 'ncook2', 'ncook3', 'ncook4', 'ncook5'])
     remove_fields(fieldnames, ['nassist1', 'nassist2', 'nassist3', 'nassist4', 'nassist5'])
+    remove_fields(fieldnames, ['allco', 'allas', 'allcl'])
 
     fieldnames = inject_missing_dates(fieldnames)
 
@@ -171,6 +172,7 @@ def run(start_date, input_filename, output_filename):
         writer = csv.DictWriter(out_file, fieldnames)
         writer.writerow(create_date_row(fieldnames, start_date))
         writer.writeheader()
+        row_num = 1
         for row in reader:
             output_row = {}
 
@@ -212,6 +214,8 @@ def run(start_date, input_filename, output_filename):
             output_row["cookrank"] = ncook
             output_row["assistrank"] = nassist
             output_row["cleanrank"] = nclean
+            output_row["num"] = row_num
+            row_num += 1
 
             writer.writerow(output_row)
 
